@@ -95,15 +95,13 @@ class Environment:
             "goal": pygame.image.load("./assets/goal.png"),
             "zombie": pygame.image.load("./assets/zombie.png"),
             "supply": pygame.image.load("./assets/supply.png"),
-            "wall": pygame.image.load("./assets/rock.png"),
+            "rock": pygame.image.load("./assets/rock.png"),
             "empty": pygame.image.load("./assets/empty.png")
         }
 
-        # Redimensionar imagens para o tamanho da célula
         for key in images:
             images[key] = pygame.transform.scale(images[key], (cellSize, cellSize))
 
-        # Limpar a tela com uma imagem de fundo ou cor de fundo
         screen.fill((200, 200, 200))
 
         for i in range(self.size):
@@ -119,9 +117,8 @@ class Environment:
                     if (i, j) not in self.collected_supplies:
                         image = images["supply"]
                 elif self.grid[i][j] == 3:
-                    image = images["wall"]
+                    image = images["rock"]
 
-                # Desenhar a imagem na tela
                 screen.blit(image, (j * cellSize, i * cellSize))
 
         pygame.display.flip()
